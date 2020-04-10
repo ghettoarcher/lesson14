@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <body>
+
+      <div>
+
+        <div id="task-1">
+
+          <div class="box">
+            <button class="box__button" type="button" data-count="plus">+</button>
+            <button class="box__button" type="button" data-count="minus">-</button>
+            <div class="box__value">0</div>
+          </div>
+
+          <div class="box">
+            <button class="box__button" type="button" data-count="plus">+</button>
+            <button class="box__button" type="button" data-count="minus">-</button>
+            <div class="box__value">0</div>
+          </div>
+
+          <div class="box">
+            <button class="box__button" type="button" data-count="plus">+</button>
+            <button class="box__button" type="button" data-count="minus">-</button>
+            <div class="box__value">0</div>
+          </div>
+
+          <div class="box">
+            <button class="box__button" type="button" data-count="plus">+</button>
+            <button class="box__button" type="button" data-count="minus">-</button>
+            <div class="box__value">0</div>
+          </div>
+
+          <div class="box">
+            <button class="box__button" type="button" data-count="plus">+</button>
+            <button class="box__button" type="button" data-count="minus">-</button>
+            <div class="box__value">0</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="task-2">
+
+          <div class="color-boxes">
+
+            <div class="c-box-container">
+              <div class="c-box" style="background-color:red">Box 1</div>
+              <div class="c-box" style="background-color:red">Box 2</div>
+              <div class="c-box" style="background-color:red">Box 3</div>
+              <div class="c-box" style="background-color:red">Box 4</div>
+              <div class="c-box" style="background-color:red">Box 5</div>
+            </div>
+
+          </div>
+
+      
+    <script>
+
+      const $box = document.querySelector('#task-1');
+
+      $box.addEventListener('click', function (event) {
+        const $button = event.target;
+
+        if (!$button.classList.value.includes('box__button')) return;
+        let $valueElement = $button.parentElement
+          .querySelector('.box__value');
+
+        let increment = ($button.dataset.count === 'plus') ? 1 : -1;
+        $valueElement.textContent = Number($valueElement.textContent) + increment;
+      })
+
+      const colors = ['steelblue', 'forestgreen', 'yellow'];
+
+      const $cBoxes = document.querySelectorAll('.c-box');
+
+      $cBoxes.forEach( (button) => {
+        button.addEventListener( 'click', function(event) {
+
+          $currentColor = event.currentTarget.style.backgroundColor;
+
+          if ($currentColor === 'steelblue') {
+            event.currentTarget.style.backgroundColor = 'forestgreen';
+          } else if ($currentColor === 'forestgreen') {
+            event.currentTarget.style.backgroundColor = 'yellow';
+          } else {
+            event.currentTarget.style.backgroundColor = 'steelblue'
+          }
+
+          button.remove();
+          document.body.querySelector('.c-box-container').append(button, ' ');
+        })
+      })
+
+    </script>
+  
+
+</body>
+</html>
